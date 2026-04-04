@@ -1,0 +1,5 @@
+scrapling
+html2text
+curl_cffi
+playwright
+browserforge
