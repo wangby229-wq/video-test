@@ -1,0 +1,25 @@
+# Java编译输出
+backend/target/
+*.class
+
+# 前端构建输出
+frontend/dist/
+frontend/node_modules/
+
+# IDE配置（可选保留）
+.idea/
+.vscode/
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+
+# 日志文件
+*.log
+
+# 上传的录音文件（生产环境）
+backend/uploads/
+
+# 环境配置文件（包含敏感信息）
+*.env
+.env.local

@@ -1,0 +1,40 @@
+server:
+  port: 8090
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/wechat_meeting?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: your_password_here
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 500MB
+      max-request-size: 500MB
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com.example.app: DEBUG
+    org.mybatis: DEBUG
+
+app:
+  upload-dir: /opt/wechat_meeting/uploads
+  frontend-url: https://wemeet.bijienetworks.com/meeting
+  siliconflow:
+    api-key: your_api_key_here
+    base-url: https://api.siliconflow.cn/v1
+  wechat:
+    corp-id: your_corp_id
+    corp-secret: your_corp_secret
+    agent-id: your_agent_id

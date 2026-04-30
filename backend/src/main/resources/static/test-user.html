@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试用户信息</title>
+</head>
+<body>
+    <h1>用户信息测试</h1>
+    <div id="result"></div>
+    <button onclick="testUserInfo()">测试获取用户信息</button>
+
+    <script>
+        const token = localStorage.getItem('token');
+        document.getElementById('result').innerHTML = `
+            <p>Token: ${token || '未找到'}</p>
+        `;
+
+        async function testUserInfo() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('请先登录');
+                return;
+            }
+
+            try {
+                const response = await fetch('http://192.168.11.16:8080/api/auth/user/info', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+                document.getElementById('result').innerHTML = `
+                    <h2>响应结果</h2>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                document.getElementById('result').innerHTML = `
+                    <h2>错误</h2>
+                    <pre>${error.message}</pre>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

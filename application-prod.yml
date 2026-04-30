@@ -1,0 +1,53 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: meeting-transcribe
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/meeting_recording?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: 1qaz@WSX
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+
+wechat:
+  corp:
+    id: "ww9b26cc4824c62bbc"
+    agent:
+      id: 1000069
+      secret: "D_F-T7rpNL6fy4jIyZVk1Ia7tP-X-OY87WeUJesQ0Ko"
+    token-url: https://qyapi.weixin.qq.com/cgi-bin/gettoken
+    user-info-url: https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo
+    user-detail-url: https://qyapi.weixin.qq.com/cgi-bin/user/get
+    oauth-url: https://open.weixin.qq.com/connect/oauth2/authorize
+    qr-connect-url: https://open.work.weixin.qq.com/wwopen/sso/qrConnect
+    media-url: https://qyapi.weixin.qq.com/cgi-bin/media/upload
+    send-message-url: https://qyapi.weixin.qq.com/cgi-bin/message/send
+
+jwt:
+  secret: your_jwt_secret_key_here
+  expiration: 86400000
+
+file:
+  upload-path: /opt/wechat_meeting/uploads/
+
+siliconflow:
+  api-key: "sk-rgdfeackmenjsxqtmvcdxbwdxidcmmctxzkilfakxftliglj"
+  base-url: "https://api.siliconflow.cn"
+  asr-model: "FunAudioLLM/SenseVoiceSmall"
+  summary-model: "deepseek-ai/DeepSeek-V3"
